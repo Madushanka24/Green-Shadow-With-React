@@ -1,17 +1,11 @@
-import { Button } from "@/components/ui/button.tsx";
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
-import {Input} from "@/components/ui/input.tsx";
-import {GenericFormCard} from "@/components/ui/form-card.tsx";
+import {Input} from "../Components/ui/input.tsx";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteField, saveFields, updateFields} from "@/reducers/FieldSlice.ts";
-import {Fields} from "@/model/Fields.ts";
+import {deleteField, saveFields, updateFields} from "../reducers/FieldSlice.ts";
+import {GenericFormCard} from "../Components/ui/form-card.tsx";
+import {Button} from "../Components/ui/button.tsx";
+import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "../Components/ui/table.tsx";
+import {Fields} from "../model/Fields.ts";
+
 
 export function Field() {
 

@@ -1,39 +1,40 @@
 import './App.css'
 import {createBrowserRouter, RouterProvider} from "react-router";
-import {RootLayout} from "./components/RootLayout.tsx";
-import {Dashboard} from "./pages/Dashboard.tsx";
-import {SignIn} from "./pages/SignIn.tsx";
-import {SignUp} from "./pages/SignUp.tsx";
-import {Field} from "./pages/Field.tsx";
-import {Crop} from "./pages/Crop.tsx";
-import {Staff} from "./pages/Staff.tsx";
-import {Vehicle} from "./pages/Vehicle.tsx";
-import {Equipment} from "./pages/Equipment.tsx";
-import {Logs} from "./pages/Logs.tsx";
-
+import {RootLayout} from "./Components/RootLayout.tsx";
+import { Field } from './Pages/Field.tsx';
+import { Crop } from './Pages/Crop.tsx';
+import { Staff } from './Pages/Staff.tsx';
+import { Log } from './Pages/Log.tsx';
+import { Equipment } from './Pages/Equipment.tsx';
+import {Vehicle} from "./Pages/Vehicle.tsx";
+import Login from "./Pages/Login.tsx";
+import Register from './Pages/Register.tsx';
+import {Dashboard} from "./Pages/Dashboard.tsx;
 function App() {
+    const routes = createBrowserRouter([
+        {
+            path: '',
+            element : <RootLayout/>,
+            children : [
+                { path : '/field', element : <Field/>},
+                { path : '/crop', element : <Crop/>},
+                { path : '/staff', element : <Staff/>},
+                { path : '/log', element : <Log/>},
+                { path : '/vehicle', element : <Vehicle/>},
+                { path : '/equipment', element : <Equipment/>},
+                { path : '/login', element : <Login/>},
+                { path : '/signup', element : <Register/>},
+                { path : '/dashboard', element : <Dashboard/>},
+        ]
+        },
+    ])
 
-  const routers =  createBrowserRouter([
-       {path : '',
-           element : <RootLayout/>,
-           children:[
-               {path : '',element : <SignIn/>},
-               {path : '/signup',element : <SignUp/>},
-               {path : '/home',element : <Dashboard/>},
-               {path : '/field',element : <Field/>},
-               {path : '/crop',element : <Crop/>},
-               {path : '/staff',element : <Staff/>},
-               {path : '/vehicle',element : <Vehicle/>},
-               {path : '/equipment',element : <Equipment/>},
-               {path : '/logs',element : <Logs/>}
-           ]},
-  ])
+    return (
+        <>
+                <RouterProvider router={routes} />
 
-  return (
-      <>
-          <RouterProvider router={routers} />
-      </>
-  )
+        </>
+    )
 }
 
 export default App

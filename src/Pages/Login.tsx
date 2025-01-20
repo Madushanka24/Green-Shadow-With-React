@@ -1,8 +1,9 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+
 import { Link } from "react-router-dom"
+import {Label} from "../Components/ui/label.tsx";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "../Components/ui/card.tsx";
+import {Input} from "../Components/ui/input.tsx";
+import {Button} from "../Components/ui/button.tsx";
 
 export default function Login() {
     return (

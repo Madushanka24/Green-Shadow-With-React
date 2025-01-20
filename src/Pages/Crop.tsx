@@ -1,14 +1,8 @@
-import { Button } from "@/components/ui/button.tsx";
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
-import {Input} from "@/components/ui/input.tsx";
-import {GenericFormCard} from "@/components/ui/form-card.tsx";
+import {Button} from "../Components/ui/button.tsx";
+import {GenericFormCard} from "../Components/ui/form-card.tsx";
+import {Input} from "../Components/ui/input.tsx";
+import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "../Components/ui/table.tsx";
+
 const handleSave = (formData: Record<string, string>) => {
     console.log('Form data:', formData);
     // Here you would typically send this data to your backend
@@ -54,7 +48,7 @@ export function Crop() {
         <div className="pt-20 container mx-auto">
 
             <div className="flex justify-between items-center">
-                <GenericFormCard {...cropFormConfig} onSave={handleSave} />
+                <GenericFormCard {...cropFormConfig} onSave={handleSave} onUpdate={handleSave} />
 
                 <div className="inline-flex">
                     <Input className="mr-4"></Input>

@@ -1,4 +1,4 @@
-import { Fields } from "@/model/Fields";
+import { Fields } from "../model/Fields.ts";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 const initialState = {
