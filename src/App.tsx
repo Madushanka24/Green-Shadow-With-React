@@ -1,38 +1,43 @@
 import './App.css'
-import {createBrowserRouter, RouterProvider} from "react-router";
-import {RootLayout} from "./Components/RootLayout.tsx";
-import { Field } from './Pages/Field.tsx';
-import { Crop } from './Pages/Crop.tsx';
-import { Staff } from './Pages/Staff.tsx';
-import { Log } from './Pages/Log.tsx';
-import { Equipment } from './Pages/Equipment.tsx';
-import {Vehicle} from "./Pages/Vehicle.tsx";
-import Login from "./Pages/Login.tsx";
-import Register from './Pages/Register.tsx';
-import {Dashboard} from "./Pages/Dashboard.tsx;
+import {createBrowserRouter, Navigate, RouterProvider} from "react-router";
+import {RootLayout} from "./components/RootLayout.tsx";
+import { Field } from './pages/Field.tsx';
+import { Crop } from './pages/Crop.tsx';
+import { Staff } from './pages/Staff.tsx';
+import Login from "@/pages/Login.tsx";
+import Register from './pages/Register.tsx';
+import {Dashboard} from "@/pages/Dashboard.tsx";
+import { Provider, useSelector } from 'react-redux';
+import {store} from "@/store/Store.ts";
 function App() {
+
+    const isAuthenticated = useSelector(
+        (state) => state.user.isAuthenticated
+    );
+
+
     const routes = createBrowserRouter([
         {
-            path: '',
-            element : <RootLayout/>,
-            children : [
-                { path : '/field', element : <Field/>},
-                { path : '/crop', element : <Crop/>},
-                { path : '/staff', element : <Staff/>},
-                { path : '/log', element : <Log/>},
-                { path : '/vehicle', element : <Vehicle/>},
-                { path : '/equipment', element : <Equipment/>},
-                { path : '/login', element : <Login/>},
-                { path : '/signup', element : <Register/>},
-                { path : '/dashboard', element : <Dashboard/>},
-        ]
+            path: "",
+            element: <RootLayout />,
+            children: [
+                { path: "", element: <Login /> },
+                { path: "/signup", element: <Register /> },
+                {
+                    path: "/dashboard",
+                    element: isAuthenticated ? <Dashboard /> : <Navigate to="" />},
+                { path: "/field", element: <Field /> },
+                { path: "/crop", element: <Crop /> },
+                { path: "/staff", element: <Staff /> },
+            ],
         },
-    ])
+    ]);
 
     return (
         <>
+            <Provider store={store}>
                 <RouterProvider router={routes} />
-
+            </Provider>
         </>
     )
 }
